@@ -1,5 +1,6 @@
 urlpatterns = [
   #...snip...
-  url(r'api/auth/', include('knox.urls'))
+  # url(r'api/auth/', include('knox.urls'))
+
   #...snip...
 ]
