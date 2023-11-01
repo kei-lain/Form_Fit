@@ -1,8 +1,9 @@
 from django.urls import path
-from .views import CreatePersonAPI, UpdatePersonAPI, 
+
+from . import views
 
 urlpatterns = [
-    path('create_user/', CreatePersonAPI.as_view()),
-    path('update-user', UpdatePersonAPI.as_view()),
+    path('create-user/', views.CreatePersonAPI.as_view()),
+    path('update-user/', views.UpdatePersonAPI.as_view())
   
 ]

@@ -6,9 +6,9 @@ from .serializers import PersonSerializer , CreatePersonSerializer, UpdatePerson
 
 
 class CreatePersonAPI(CreateAPIView):
-    queryset = Person.objects.all()
+    queryset = Person
     serializer_class = CreatePersonSerializer
-    permission_classes = (AllowAny())
+    permission_classes = [AllowAny]
 
 class UpdatePersonAPI(UpdateAPIView):
     queryset = Person.objects.all()

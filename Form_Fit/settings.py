@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'authentication',
     'backend',
     'rest_framework',
-    "knox",
+    'knox',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -92,22 +93,24 @@ DATABASES = {
 }
 
 REST_FRAMEWORK = {
-    'DATETIME_FORMAT': "%Y-%m-%dT%H:%M:%S.%fZ",
+    
+    # 'DATETIME_FORMAT': "%Y-%m-%dT%H:%M:%S.%fZ",
     'DEFAULT_AUTHENTICATION_CLASSES': [
-             ('knox.auth.TokenAuthentication',),
+             'knox.auth.TokenAuthentication',
     ]
 }
 
 
 
 REST_KNOX = {
-  'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
-  'AUTH_TOKEN_CHARACTER_LENGTH': 64,
-  'TOKEN_TTL': timedelta(hours=10),
-  'USER_SERIALIZER': 'knox.serializers.UserSerializer',
-  'TOKEN_LIMIT_PER_USER': None,
-  'AUTO_REFRESH': False,
-  'EXPIRY_DATETIME_FORMAT': api_settings.DATETIME_FORMAT
+#   'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
+#   'AUTH_TOKEN_CHARACTER_LENGTH': 64,
+  
+  'USER_SERIALIZER': 'authentication.serializers.PersonSerializer',
+  'TOKEN_TTL': timedelta(hours=48),
+#   'TOKEN_LIMIT_PER_USER': None,
+#   'AUTO_REFRESH': False,
+#   'EXPIRY_DATETIME_FORMAT': api_settings.DATETIME_FORMAT
 }
 
 
@@ -129,6 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'authentication.Person'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
